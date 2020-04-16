@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    host: localhost
+    password: admin
+    username: admin
+
+  cloud:
+    stream:
+      bindings:
+        greetingChannel:
+          destination: greeting
+
+
