@@ -10,10 +10,10 @@ spring:
         greetingChannel:
           destination: x.greeting
           contentType: application/json
-          group: q.greeting.group
+          group: greeting.group
         testChannel:
           destination: x.test
           contentType: application/json
-          group: q.test.group
+          group: test.group
 
 
