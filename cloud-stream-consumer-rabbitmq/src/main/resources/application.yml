@@ -11,7 +11,7 @@ spring:
           destination: x.greeting
           contentType: application/json
           group: greeting.group
-        testChannel:
+        test-source:
           destination: x.test
           contentType: application/json
           group: test.group

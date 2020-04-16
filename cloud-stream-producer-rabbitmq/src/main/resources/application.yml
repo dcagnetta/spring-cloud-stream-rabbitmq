@@ -10,6 +10,6 @@ spring:
         greetingChannel:
           destination: x.greeting
           contentType: application/json
-        testChannel:
+        test-source:
           destination: x.test
           contentType: application/json

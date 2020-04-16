@@ -9,8 +9,9 @@ import org.springframework.messaging.Message;
 @EnableBinding(TestSink.class)
 public class TestListener {
 
-    @StreamListener(TestSink.CHANNEL)
+    @StreamListener(TestSink.TEST_SOURCE)
     public void log(Message<TestMessage> message){
+        log.info("\n******************\nAt the Sink\n******************\n");
         log.info("Message received: {}", message);
         log.info("Name: {}", message.getPayload().getName());
     }
