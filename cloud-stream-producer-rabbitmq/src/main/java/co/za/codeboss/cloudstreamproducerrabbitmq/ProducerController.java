@@ -1,8 +1,7 @@
 package co.za.codeboss.cloudstreamproducerrabbitmq;
 
-import org.springframework.messaging.Message;
+import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,17 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProducerController {
 
-    private MessageChannel greet;
+    private MessageChannel messageChannel;
 
-    public ProducerController(HelloBinding binding) {
-        greet = binding.greeting();
+    public ProducerController(TestSource testSource) {
+        messageChannel = testSource.testChannel();
     }
 
     @GetMapping("/greet/{name}")
-    public void publish(@PathVariable String name) {
-        String greeting = "Hello, " + name + "!";
-        Message<String> msg = MessageBuilder.withPayload(greeting).build();
+    public String publish(@PathVariable String name) {
+        var message = TestMessage.builder().name("Dillan").number(10).build();
+        var payload = MessageBuilder.withPayload(message).build();
 
-        this.greet.send(msg);
+        messageChannel.send(payload);
+
+        return "success";
     }
 }

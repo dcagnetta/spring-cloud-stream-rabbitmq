@@ -8,6 +8,12 @@ spring:
     stream:
       bindings:
         greetingChannel:
-          destination: greeting
+          destination: x.greeting
+          contentType: application/json
+          group: q.greeting.group
+        testChannel:
+          destination: x.test
+          contentType: application/json
+          group: q.test.group
 
 

@@ -8,4 +8,8 @@ spring:
     stream:
       bindings:
         greetingChannel:
-          destination: greeting
+          destination: x.greeting
+          contentType: application/json
+        testChannel:
+          destination: x.test
+          contentType: application/json
